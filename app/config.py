@@ -17,7 +17,7 @@ class Settings:
     CORS_ORIGINS: list[str] = [
         o.strip()
         for o in os.getenv(
-            "CORS_ORIGINS", "https://homerental.sokheng429.workers.dev/"
+            "CORS_ORIGINS", "https://homerental.sokheng429.workers.dev"
         ).split(",")
         if o.strip()
     ]

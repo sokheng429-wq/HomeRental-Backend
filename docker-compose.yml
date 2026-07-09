@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: home-rental-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ADMIN
+      MYSQL_DATABASE: home_rental
+    ports:
+      - "3306:3306"
+    volumes:
+      - home_rental_mysqldata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pADMIN"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  home_rental_mysqldata:
